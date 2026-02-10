@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zyra Collective</title>
+
+<style>
+* {margin:0; padding:0; box-sizing:border-box; font-family: Arial, sans-serif;}
+body {background:#fff; color:#111; scroll-behavior:smooth;}
+a {text-decoration:none; color:inherit;}
+img {max-width:100%; display:block;}
+
+/* Header */
+header {display:flex; justify-content:space-between; align-items:center; padding:15px 20px; background:#fff; position:sticky; top:0; z-index:100; box-shadow:0 2px 5px rgba(0,0,0,0.05);}
+header img {height:50px;}
+nav a {margin-left:15px; font-weight:bold; font-size:0.95rem;}
+
+/* Hero Section */
+#hero {display:flex; flex-direction:column; justify-content:center; align-items:center; height:70vh; text-align:center; padding:20px;}
+#hero h1 {font-size:2.5rem; margin-bottom:10px;}
+#hero p {font-size:1.1rem; margin-bottom:15px; color:#555;}
+#hero button {padding:10px 20px; margin:5px; border:none; background:#111; color:#fff; cursor:pointer; font-weight:bold;}
+
+/* Sections */
+section {padding:50px 20px;}
+section h2 {font-size:2rem; margin-bottom:20px; text-align:center;}
+section p {max-width:800px; margin:0 auto 30px auto; text-align:center; color:#555;}
+
+/* Slider */
+.slider-container {position:relative; max-width:1000px; margin:0 auto; overflow:hidden;}
+.slider-track {display:flex; transition:transform 0.5s ease;}
+.product {flex:0 0 220px; margin:0 10px; border:1px solid #eee; padding:10px; text-align:center; border-radius:10px; background:#fff; transition:0.3s;}
+.product:hover {box-shadow:0 5px 15px rgba(0,0,0,0.1);}
+.product img {height:200px; object-fit:cover; border-radius:10px;}
+.product h3 {margin:10px 0; font-size:1rem;}
+.product p {color:#555; font-size:0.85rem;}
+.product .price {font-weight:bold; margin-top:5px;}
+.product button {margin-top:10px; padding:7px 12px; border:none; background:#111; color:#fff; cursor:pointer; border-radius:5px;}
+.slider-btn {position:absolute; top:50%; transform:translateY(-50%); background:#111; color:#fff; border:none; padding:10px; cursor:pointer; opacity:0.7; border-radius:50%; z-index:10;}
+.prev-btn {left:5px;} .next-btn {right:5px;}
+
+/* Contact */
+form {max-width:400px; margin:0 auto; display:flex; flex-direction:column;}
+form input, form textarea {margin-bottom:15px; padding:10px; border:1px solid #ccc; border-radius:5px;}
+form button {padding:12px; border:none; background:#111; color:#fff; font-weight:bold; cursor:pointer; border-radius:5px;}
+
+/* WhatsApp Floating */
+.whatsapp-btn {position:fixed; bottom:20px; right:20px; width:60px; height:60px; z-index:100;}
+.whatsapp-btn img {width:100%; height:100%;}
+
+/* Footer */
+footer {background:#111; color:#fff; padding:40px 20px; text-align:center;}
+footer a {color:#fff; font-weight:bold;}
+</style>
+</head>
+<body>
+
+<header>
+  <img src="images/logo.png" alt="Zyra Collective">
+  <nav>
+    <a href="#hero">Home</a>
+    <a href="#tshirts">T-Shirts</a>
+    <a href="#shirts">Shirts</a>
+    <a href="#pants">Pants</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section id="hero">
+  <h1>Zyra Collective</h1>
+  <p>Gen-Z Streetwear for Men</p>
+  <div>
+    <button onclick="document.getElementById('tshirts').scrollIntoView({behavior:'smooth'});">Shop T-Shirts</button>
+    <button onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'});">Contact Us</button>
+  </div>
+</section>
+
+<!-- T-Shirts Section -->
+<section id="tshirts">
+  <h2>T-Shirts</h2>
+  <div class="slider-container">
+    <button class="slider-btn prev-btn" data-target="tshirts">&lt;</button>
+    <div class="slider-track" id="tshirts-track">
+      <div class="product"><img src="images/tshirt1.jpg"><h3>Oversized Black Tee</h3><p>Relaxed street fit, 100% Cotton.</p><div class="price">₹899</div><button>Add to Cart</button></div>
+      <div class="product"><img src="images/tshirt2.jpg"><h3>Graphic Street Tee</h3><p>Statement graphic, cotton blend.</p><div class="price">₹999</div><button>Add to Cart</button></div>
+      <div class="product"><img src="images/tshirt3.jpg"><h3>Minimal White Tee</h3><p>Clean versatile, combed cotton.</p><div class="price">₹799</div><button>Add to Cart</button></div>
+      <div class="product"><img src="images/tshirt4.jpg"><h3>Drop-Shoulder Tee</h3><p>Heavy cotton, trendy drop-shoulder.</p><div class="price">₹1099</div><button>Add to Cart</button></div>
+      <div class="product"><img src="images/tshirt5.jpg"><h3>Urban Fit Tee</h3><p>Soft cotton-lycra, slim-relaxed fit.</p><div class="price">₹949</div><button>Add to Cart</button></div>
+    </div>
+    <button class="slider-btn next-btn" data-target="tshirts">&gt;</button>
+  </div>
+</section>
+
+<!-- Shirts Section -->
+<section id="shirts">
+  <h2>Shirts</h2>
+  <div class="slider-container">
+    <button class="slider-btn prev-btn" data-target="shirts">&lt;</button>
+    <div class="slider-track" id="shirts-track">
+      <div class="product"><img src="images/shirt1.jpg"><h3>Casual Street Shirt</h3><p>Modern cut, premium finish.</p><div class="price">₹1299</div><button>Add to Cart</button></div>
+      <div class="product"><img src="images/shirt2.jpg"><h3>Check Street Shirt</h3><p>Classic checks with street attitude.</p><div class="price">₹1399</div><button>Add to Cart</button></div>
+      <div class="product"><img src="images/shirt3.jpg"><h3>Solid Black Shirt</h3><p>Sharp clean black shirt.</p><div class="price">₹1199</div><button>Add to Cart</button></div>
+      <div class="product"><img src="images/shirt4.jpg"><h3>Overshirt Street Fit</h3><p>Layer-ready, relaxed fit.</p><div class="price">₹1499</div><button>Add to Cart</button></div>
+      <div class="product"><img src="images/shirt5.jpg"><h3>Denim Street Shirt</h3><p>Rugged denim, urban style.</p><div class="price">₹1599</div><button>Add to Cart</button></div>
+    </div>
+    <button class="slider-btn next-btn" data-target="shirts">&gt;</button>
+  </div>
+</section>
+
+<!-- Pants Section -->
+<section id="pants">
+  <h2>Pants</h2>
+  <div class="slider-container">
+    <button class="slider-btn prev-btn" data-target="pants">&lt;</button>
+    <div class="slider-track" id="pants-track">
+      <div class="product"><img src="images/pants1.jpg"><h3>Cargo Street Pants</h3><p>Utility cargo, bold street look.</p><div class="price">₹1799</div><button>Add to Cart</button></div>
+      <div class="product"><img src="images/pants2.jpg"><h3>Slim Fit Jeans</h3><p>Clean slim jeans, stretch denim.</p><div class="price">₹1699</div><button>Add to Cart</button></div>
+      <div class="product"><img src="images/pants3.jpg"><h3>Track Street Pants</h3><p>Comfort meets style, polyester blend.</p><div class="price">₹1399</div><button>Add to Cart</button></div>
+      <div class="product"><img src="images/pants4.jpg"><h3>Baggy Cargo Pants</h3><p>Baggy street pants, bold statement.</p><div class="price">₹1899</div><button>Add to Cart</button></div>
+      <div class="product"><img src="images/pants5.jpg"><h3>Urban Joggers</h3><p>Tapered urban joggers, fleece cotton.</p><div class="price">₹1499</div><button>Add to Cart</button></div>
+    </div>
+    <button class="slider-btn next-btn" data-target="pants">&gt;</button>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact">
+  <h2>Contact Us</h2>
+  <p>Have questions or want to place an order? We’re here to help.</p>
+  <form id="contact-form">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Email" required>
+    <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+    <button type="submit">Send Message</button>
+  </form>
+</section>
+
+<!-- WhatsApp Button -->
+<a href="https://wa.me/917385009275" target="_blank" class="whatsapp-btn">
+  <img src="images/whatsapp-icon.png" alt="WhatsApp">
+</a>
+
+<footer>
+  <p>&copy; 2026 Zyra Collective | <a href="mailto:support@zyracollective.in">support@zyracollective.in</a> | Phone: 7385009275</p>
+</footer>
+
+<!-- JS -->
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script>
+(function(){ emailjs.init("YOUR_USER_ID"); })();
+function sendEmail(e){
+  e.preventDefault();
+  emailjs.sendForm('YOUR_SERVICE_ID','YOUR_TEMPLATE_ID',e.target)
+  .then(()=>alert('Message sent!'))
+  .catch(err=>alert('Failed: '+err));
+  e.target.reset();
+}
+document.getElementById('contact-form').addEventListener('submit', sendEmail);
+
+/* Slider JS for all sections */
+const sliders = ['tshirts','shirts','pants'];
+sliders.forEach(id=>{
+  let track = document.getElementById(id+'-track');
+  let scrollAmount = 0;
+  document.querySelector(`[data-target="${id}"].next-btn`).addEventListener('click',()=>{
+    scrollAmount += 240;
+    if(scrollAmount > track.scrollWidth - track.clientWidth) scrollAmount = track.scrollWidth - track.clientWidth;
+    track.style.transform = `translateX(-${scrollAmount}px)`;
+  });
+  document.querySelector(`[data-target="${id}"].prev-btn`).addEventListener('click',()=>{
+    scrollAmount -= 240;
+    if(scrollAmount < 0) scrollAmount = 0;
+    track.style.transform = `translateX(-${scrollAmount}px)`;
+  });
+});
+</script>
+</body>
+</html>
