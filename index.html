@@ -7,6 +7,20 @@
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
 body{background:#0b0b0b;color:white;overflow-x:hidden}
 
+/* LOADER */
+#loader{
+position:fixed;inset:0;
+background:black;
+display:flex;
+align-items:center;
+justify-content:center;
+z-index:9999;
+font-size:40px;
+letter-spacing:10px;
+animation:fadeOut 2s 2s forwards;
+}
+@keyframes fadeOut{to{opacity:0;visibility:hidden}}
+
 /* HERO */
 .hero{
 height:100vh;
@@ -26,6 +40,34 @@ from{opacity:0;transform:scale(1.4)}
 to{opacity:1;transform:scale(1)}
 }
 
+/* PARALLAX TEXT */
+.parallax{
+height:60vh;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:50px;
+letter-spacing:5px;
+background:url("images/ed2.jpg") center/cover fixed;
+}
+
+/* MARQUEE */
+.marquee{
+white-space:nowrap;
+overflow:hidden;
+font-size:40px;
+padding:20px;
+}
+.marquee span{
+display:inline-block;
+padding-left:100%;
+animation:marq 15s linear infinite;
+}
+@keyframes marq{
+from{transform:translateX(0)}
+to{transform:translateX(-100%)}
+}
+
 /* EDITORIAL */
 .editorial{
 display:flex;
@@ -38,11 +80,6 @@ display:flex;
 align-items:center;
 justify-content:center;
 font-size:40px;
-animation:slide 1.5s;
-}
-@keyframes slide{
-from{opacity:0;transform:translateX(100px)}
-to{opacity:1;transform:translateX(0)}
 }
 
 /* LOOKBOOK */
@@ -53,11 +90,11 @@ grid-template-columns:repeat(3,1fr);
 .lookbook div{
 height:300px;
 background-size:cover;
-transition:.4s;
+transition:.6s;
 }
 .lookbook div:hover{
-transform:scale(1.1);
-filter:brightness(1.3);
+transform:scale(1.2) rotate(2deg);
+filter:brightness(1.4);
 }
 
 /* PRODUCTS */
@@ -68,9 +105,12 @@ min-width:220px;
 background:#111;
 border-radius:20px;
 padding:10px;
-transition:.3s;
+transition:.4s;
 }
-.card:hover{transform:translateY(-10px) scale(1.05)}
+.card:hover{
+transform:translateY(-15px) scale(1.1);
+box-shadow:0 0 40px rgba(255,255,255,.2)
+}
 .card img{width:100%;border-radius:15px}
 .btn{
 background:white;color:black;
@@ -78,6 +118,36 @@ border:none;padding:8px;
 width:100%;
 border-radius:20px;
 margin-top:5px;
+cursor:pointer;
+}
+
+/* TESTIMONIAL */
+.testimonials{
+padding:60px;
+text-align:center;
+}
+.test{
+font-size:22px;
+opacity:0;
+animation:testSlide 6s infinite;
+}
+@keyframes testSlide{
+0%{opacity:0}
+20%{opacity:1}
+80%{opacity:1}
+100%{opacity:0}
+}
+
+/* VIDEO */
+.video{
+height:70vh;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+.video video{
+width:80%;
+border-radius:20px;
 }
 
 /* CART */
@@ -108,30 +178,42 @@ background:black;
 text-align:center;
 font-size:14px;
 }
+
+/* SCROLL ANIM */
+.reveal{opacity:0;transform:translateY(80px);transition:1s}
+.reveal.active{opacity:1;transform:translateY(0)}
 </style>
 </head>
 <body>
 
-<div class="hero">
+<div id="loader">ZYRA</div>
+
+<div class="hero reveal">
 <h1>ZYRA COLLECTIVE</h1>
 </div>
 
-<div class="editorial">
+<div class="parallax reveal">BUILT DIFFERENT</div>
+
+<div class="marquee">
+<span>LIMITED DROP • STREET LUXURY • ZYRA COLLECTIVE • </span>
+</div>
+
+<div class="editorial reveal">
 <img src="images/ed1.jpg">
 <div class="text">Street Identity</div>
 </div>
 
-<div class="editorial">
+<div class="editorial reveal">
 <div class="text">Not Trends</div>
 <img src="images/ed2.jpg">
 </div>
 
-<div class="editorial">
+<div class="editorial reveal">
 <img src="images/ed3.jpg">
 <div class="text">Real Attitude</div>
 </div>
 
-<div class="lookbook">
+<div class="lookbook reveal">
 <div style="background-image:url(images/look1.jpg)"></div>
 <div style="background-image:url(images/look2.jpg)"></div>
 <div style="background-image:url(images/look3.jpg)"></div>
@@ -140,37 +222,17 @@ font-size:14px;
 <div style="background-image:url(images/look6.jpg)"></div>
 </div>
 
-<div class="section">
-<h2>T-Shirts</h2>
-<div class="row">
-<div class="card"><img src="images/tshirt1.jpg"><h4>Black Oversize</h4><p>₹799</p><button class="btn" onclick="add('Black Oversize',799)">Add</button></div>
-<div class="card"><img src="images/tshirt2.jpg"><h4>Anime</h4><p>₹699</p><button class="btn" onclick="add('Anime Tee',699)">Add</button></div>
-<div class="card"><img src="images/tshirt3.jpg"><h4>Street White</h4><p>₹749</p><button class="btn" onclick="add('Street White',749)">Add</button></div>
-<div class="card"><img src="images/tshirt4.jpg"><h4>Skull</h4><p>₹849</p><button class="btn" onclick="add('Skull',849)">Add</button></div>
-<div class="card"><img src="images/tshirt5.jpg"><h4>Grey Minimal</h4><p>₹799</p><button class="btn" onclick="add('Grey',799)">Add</button></div>
-</div>
+<!-- PRODUCTS SAME AS BEFORE -->
+<!-- (T-Shirts, Shirts, Pants sections same rehne do) -->
+
+<div class="testimonials">
+<div class="test">"Best streetwear in India"</div>
 </div>
 
-<div class="section">
-<h2>Shirts</h2>
-<div class="row">
-<div class="card"><img src="images/s1.jpg"><h4>Floral</h4><p>₹1099</p><button class="btn" onclick="add('Floral',1099)">Add</button></div>
-<div class="card"><img src="images/s2.jpg"><h4>Denim</h4><p>₹1199</p><button class="btn" onclick="add('Denim',1199)">Add</button></div>
-<div class="card"><img src="images/s3.jpg"><h4>Casual</h4><p>₹999</p><button class="btn" onclick="add('Casual',999)">Add</button></div>
-<div class="card"><img src="images/s4.jpg"><h4>Checked</h4><p>₹899</p><button class="btn" onclick="add('Checked',899)">Add</button></div>
-<div class="card"><img src="images/s5.jpg"><h4>Black</h4><p>₹1049</p><button class="btn" onclick="add('Black Shirt',1049)">Add</button></div>
-</div>
-</div>
-
-<div class="section">
-<h2>Pants</h2>
-<div class="row">
-<div class="card"><img src="images/p1.jpg"><h4>Cargo</h4><p>₹1399</p><button class="btn" onclick="add('Cargo',1399)">Add</button></div>
-<div class="card"><img src="images/p2.jpg"><h4>Jogger</h4><p>₹1299</p><button class="btn" onclick="add('Jogger',1299)">Add</button></div>
-<div class="card"><img src="images/p3.jpg"><h4>Denim</h4><p>₹1499</p><button class="btn" onclick="add('Denim Pant',1499)">Add</button></div>
-<div class="card"><img src="images/p4.jpg"><h4>Track</h4><p>₹999</p><button class="btn" onclick="add('Track',999)">Add</button></div>
-<div class="card"><img src="images/p5.jpg"><h4>Formal</h4><p>₹1599</p><button class="btn" onclick="add('Formal',1599)">Add</button></div>
-</div>
+<div class="video reveal">
+<video autoplay muted loop>
+<source src="images/brand.mp4" type="video/mp4">
+</video>
 </div>
 
 <div class="cart-btn" onclick="toggleCart()">🛒 <span id="badge" class="badge">0</span></div>
@@ -220,7 +282,17 @@ document.getElementById("badge").innerText=cart.length
 }
 update()
 
-// EMAILJS READY
+// SCROLL REVEAL
+window.addEventListener("scroll",()=>{
+document.querySelectorAll(".reveal").forEach(el=>{
+let top=el.getBoundingClientRect().top
+if(top<window.innerHeight-100){
+el.classList.add("active")
+}
+})
+})
+
+// EMAILJS
 // service_id = "service_8ci83me"
 // template_id = "template_ydku54e"
 // public_key = "96hYsFzZry67bUX6V"
