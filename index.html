@@ -4,79 +4,194 @@
 <title>Zyra Collective</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
-body{margin:0;background:#0f0f0f;color:white;font-family:Poppins}
-header{padding:15px;background:#000;display:flex;justify-content:space-between;align-items:center}
-.logo{font-weight:700;font-size:20px}
-.cart-btn{position:relative;cursor:pointer}
-.badge{position:absolute;top:-5px;right:-5px;background:red;color:white;border-radius:50%;padding:3px 6px;font-size:10px}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
+body{background:#0b0b0b;color:white;overflow-x:hidden}
 
-.section{padding:15px}
-.row{display:flex;gap:10px;overflow-x:auto}
-.card{min-width:180px;background:#111;border-radius:20px;padding:10px;transition:.3s}
-.card:hover{transform:scale(1.05)}
+/* HERO */
+.hero{
+height:100vh;
+background:url("images/hero.jpg") center/cover fixed;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+}
+.hero h1{
+font-size:60px;
+letter-spacing:8px;
+animation:fadeZoom 2s;
+}
+@keyframes fadeZoom{
+from{opacity:0;transform:scale(1.4)}
+to{opacity:1;transform:scale(1)}
+}
+
+/* EDITORIAL */
+.editorial{
+display:flex;
+min-height:80vh;
+}
+.editorial img{width:50%;object-fit:cover}
+.editorial .text{
+width:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:40px;
+animation:slide 1.5s;
+}
+@keyframes slide{
+from{opacity:0;transform:translateX(100px)}
+to{opacity:1;transform:translateX(0)}
+}
+
+/* LOOKBOOK */
+.lookbook{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+}
+.lookbook div{
+height:300px;
+background-size:cover;
+transition:.4s;
+}
+.lookbook div:hover{
+transform:scale(1.1);
+filter:brightness(1.3);
+}
+
+/* PRODUCTS */
+.section{padding:40px}
+.row{display:flex;gap:20px;overflow-x:auto}
+.card{
+min-width:220px;
+background:#111;
+border-radius:20px;
+padding:10px;
+transition:.3s;
+}
+.card:hover{transform:translateY(-10px) scale(1.05)}
 .card img{width:100%;border-radius:15px}
-.btn{background:white;color:black;border:none;padding:8px;width:100%;border-radius:20px;margin-top:5px}
+.btn{
+background:white;color:black;
+border:none;padding:8px;
+width:100%;
+border-radius:20px;
+margin-top:5px;
+}
 
-.cart-panel{position:fixed;right:-100%;top:0;width:80%;height:100%;background:#111;padding:15px;transition:.4s;z-index:999}
-.cart-panel.active{right:0}
+/* CART */
+.cart-btn{position:fixed;top:20px;right:20px;font-size:25px;cursor:pointer}
+.badge{
+background:red;color:white;
+padding:4px 7px;
+border-radius:50%;
+font-size:12px;
+}
+.cart{
+position:fixed;
+right:-100%;
+top:0;
+width:80%;
+height:100%;
+background:#111;
+padding:20px;
+transition:.5s;
+}
+.cart.active{right:0}
 .cart-item{display:flex;justify-content:space-between;margin:10px 0}
-.close{font-size:20px;cursor:pointer}
-.checkout{background:#00e676;color:black;padding:10px;border:none;border-radius:20px;width:100%}
+
+/* FOOTER */
+footer{
+padding:40px;
+background:black;
+text-align:center;
+font-size:14px;
+}
 </style>
 </head>
 <body>
 
-<header>
-<div class="logo">ZYRA</div>
-<div class="cart-btn" onclick="toggleCart()">🛒<span id="badge" class="badge">0</span></div>
-</header>
+<div class="hero">
+<h1>ZYRA COLLECTIVE</h1>
+</div>
+
+<div class="editorial">
+<img src="images/ed1.jpg">
+<div class="text">Street Identity</div>
+</div>
+
+<div class="editorial">
+<div class="text">Not Trends</div>
+<img src="images/ed2.jpg">
+</div>
+
+<div class="editorial">
+<img src="images/ed3.jpg">
+<div class="text">Real Attitude</div>
+</div>
+
+<div class="lookbook">
+<div style="background-image:url(images/look1.jpg)"></div>
+<div style="background-image:url(images/look2.jpg)"></div>
+<div style="background-image:url(images/look3.jpg)"></div>
+<div style="background-image:url(images/look4.jpg)"></div>
+<div style="background-image:url(images/look5.jpg)"></div>
+<div style="background-image:url(images/look6.jpg)"></div>
+</div>
 
 <div class="section">
-<h3>T-Shirts</h3>
+<h2>T-Shirts</h2>
 <div class="row">
-<div class="card"><img src="images/tshirt1.jpg"><h4>Oversized Black</h4><p>₹799</p><button class="btn" onclick="add('Oversized Black',799)">Add to Cart</button></div>
-<div class="card"><img src="images/tshirt2.jpg"><h4>White Street</h4><p>₹749</p><button class="btn" onclick="add('White Street',749)">Add to Cart</button></div>
-<div class="card"><img src="images/tshirt3.jpg"><h4>Anime Tee</h4><p>₹699</p><button class="btn" onclick="add('Anime Tee',699)">Add to Cart</button></div>
-<div class="card"><img src="images/tshirt4.jpg"><h4>Skull Print</h4><p>₹849</p><button class="btn" onclick="add('Skull Print',849)">Add to Cart</button></div>
-<div class="card"><img src="images/tshirt5.jpg"><h4>Minimal Grey</h4><p>₹799</p><button class="btn" onclick="add('Minimal Grey',799)">Add to Cart</button></div>
+<div class="card"><img src="images/t1.jpg"><h4>Black Oversize</h4><p>₹799</p><button class="btn" onclick="add('Black Oversize',799)">Add</button></div>
+<div class="card"><img src="images/t2.jpg"><h4>Anime</h4><p>₹699</p><button class="btn" onclick="add('Anime Tee',699)">Add</button></div>
+<div class="card"><img src="images/t3.jpg"><h4>Street White</h4><p>₹749</p><button class="btn" onclick="add('Street White',749)">Add</button></div>
+<div class="card"><img src="images/t4.jpg"><h4>Skull</h4><p>₹849</p><button class="btn" onclick="add('Skull',849)">Add</button></div>
+<div class="card"><img src="images/t5.jpg"><h4>Grey Minimal</h4><p>₹799</p><button class="btn" onclick="add('Grey',799)">Add</button></div>
 </div>
 </div>
 
 <div class="section">
-<h3>Shirts</h3>
+<h2>Shirts</h2>
 <div class="row">
-<div class="card"><img src="images/s1.jpg"><h4>Floral</h4><p>₹1099</p><button class="btn" onclick="add('Floral Shirt',1099)">Add to Cart</button></div>
-<div class="card"><img src="images/s2.jpg"><h4>Denim</h4><p>₹1199</p><button class="btn" onclick="add('Denim Shirt',1199)">Add to Cart</button></div>
-<div class="card"><img src="images/s3.jpg"><h4>Casual</h4><p>₹999</p><button class="btn" onclick="add('Casual Shirt',999)">Add to Cart</button></div>
-<div class="card"><img src="images/s4.jpg"><h4>Checked</h4><p>₹899</p><button class="btn" onclick="add('Checked Shirt',899)">Add to Cart</button></div>
-<div class="card"><img src="images/s5.jpg"><h4>Plain Black</h4><p>₹1049</p><button class="btn" onclick="add('Plain Black Shirt',1049)">Add to Cart</button></div>
+<div class="card"><img src="images/s1.jpg"><h4>Floral</h4><p>₹1099</p><button class="btn" onclick="add('Floral',1099)">Add</button></div>
+<div class="card"><img src="images/s2.jpg"><h4>Denim</h4><p>₹1199</p><button class="btn" onclick="add('Denim',1199)">Add</button></div>
+<div class="card"><img src="images/s3.jpg"><h4>Casual</h4><p>₹999</p><button class="btn" onclick="add('Casual',999)">Add</button></div>
+<div class="card"><img src="images/s4.jpg"><h4>Checked</h4><p>₹899</p><button class="btn" onclick="add('Checked',899)">Add</button></div>
+<div class="card"><img src="images/s5.jpg"><h4>Black</h4><p>₹1049</p><button class="btn" onclick="add('Black Shirt',1049)">Add</button></div>
 </div>
 </div>
 
 <div class="section">
-<h3>Pants</h3>
+<h2>Pants</h2>
 <div class="row">
-<div class="card"><img src="images/p1.jpg"><h4>Cargo</h4><p>₹1399</p><button class="btn" onclick="add('Cargo Pants',1399)">Add to Cart</button></div>
-<div class="card"><img src="images/p2.jpg"><h4>Jogger</h4><p>₹1299</p><button class="btn" onclick="add('Jogger Pants',1299)">Add to Cart</button></div>
-<div class="card"><img src="images/p3.jpg"><h4>Denim</h4><p>₹1499</p><button class="btn" onclick="add('Denim Pants',1499)">Add to Cart</button></div>
-<div class="card"><img src="images/p4.jpg"><h4>Track</h4><p>₹999</p><button class="btn" onclick="add('Track Pants',999)">Add to Cart</button></div>
-<div class="card"><img src="images/p5.jpg"><h4>Formal</h4><p>₹1599</p><button class="btn" onclick="add('Formal Pants',1599)">Add to Cart</button></div>
+<div class="card"><img src="images/p1.jpg"><h4>Cargo</h4><p>₹1399</p><button class="btn" onclick="add('Cargo',1399)">Add</button></div>
+<div class="card"><img src="images/p2.jpg"><h4>Jogger</h4><p>₹1299</p><button class="btn" onclick="add('Jogger',1299)">Add</button></div>
+<div class="card"><img src="images/p3.jpg"><h4>Denim</h4><p>₹1499</p><button class="btn" onclick="add('Denim Pant',1499)">Add</button></div>
+<div class="card"><img src="images/p4.jpg"><h4>Track</h4><p>₹999</p><button class="btn" onclick="add('Track',999)">Add</button></div>
+<div class="card"><img src="images/p5.jpg"><h4>Formal</h4><p>₹1599</p><button class="btn" onclick="add('Formal',1599)">Add</button></div>
 </div>
 </div>
 
-<div class="cart-panel" id="cartPanel">
-<span class="close" onclick="toggleCart()">✖</span>
+<div class="cart-btn" onclick="toggleCart()">🛒 <span id="badge" class="badge">0</span></div>
+
+<div class="cart" id="cart">
 <h3>Your Cart</h3>
-<div id="cartItems"></div>
+<div id="items"></div>
 <h3 id="total"></h3>
-<button class="checkout" onclick="window.location.href='checkout.html'">Checkout</button>
+<button class="btn" onclick="window.location.href='checkout.html'">Checkout</button>
 </div>
+
+<footer>
+<p>Zyra Collective © 2026</p>
+<p>Instagram | WhatsApp | Support</p>
+</footer>
 
 <script>
 let cart = JSON.parse(localStorage.getItem("cart")||"[]")
 
 function toggleCart(){
-document.getElementById("cartPanel").classList.toggle("active")
+document.getElementById("cart").classList.toggle("active")
 update()
 }
 
@@ -93,7 +208,7 @@ update()
 }
 
 function update(){
-let box=document.getElementById("cartItems")
+let box=document.getElementById("items")
 box.innerHTML=""
 let total=0
 cart.forEach((item,i)=>{
@@ -104,6 +219,11 @@ document.getElementById("total").innerText="Total: ₹"+total
 document.getElementById("badge").innerText=cart.length
 }
 update()
+
+// EMAILJS READY
+// service_id = "YOUR_SERVICE_ID"
+// template_id = "YOUR_TEMPLATE_ID"
+// public_key = "YOUR_PUBLIC_KEY"
 </script>
 
 </body>
