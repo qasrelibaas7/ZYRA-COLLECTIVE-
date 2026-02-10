@@ -9,14 +9,15 @@ body{background:#0b0b0b;color:white;overflow-x:hidden}
 
 /* LOADER */
 #loader{
-position:fixed;inset:0;
+position:fixed;
+inset:0;
 background:black;
 display:flex;
 align-items:center;
 justify-content:center;
 z-index:9999;
 font-size:40px;
-letter-spacing:10px;
+letter-spacing:12px;
 animation:fadeOut 2s 2s forwards;
 }
 @keyframes fadeOut{to{opacity:0;visibility:hidden}}
@@ -30,49 +31,10 @@ align-items:center;
 justify-content:center;
 text-align:center;
 }
-.hero h1{
-font-size:60px;
-letter-spacing:8px;
-animation:fadeZoom 2s;
-}
-@keyframes fadeZoom{
-from{opacity:0;transform:scale(1.4)}
-to{opacity:1;transform:scale(1)}
-}
-
-/* PARALLAX TEXT */
-.parallax{
-height:60vh;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:50px;
-letter-spacing:5px;
-background:url("images/ed2.jpg") center/cover fixed;
-}
-
-/* MARQUEE */
-.marquee{
-white-space:nowrap;
-overflow:hidden;
-font-size:40px;
-padding:20px;
-}
-.marquee span{
-display:inline-block;
-padding-left:100%;
-animation:marq 15s linear infinite;
-}
-@keyframes marq{
-from{transform:translateX(0)}
-to{transform:translateX(-100%)}
-}
+.hero h1{font-size:60px;letter-spacing:8px}
 
 /* EDITORIAL */
-.editorial{
-display:flex;
-min-height:80vh;
-}
+.editorial{display:flex;min-height:80vh}
 .editorial img{width:50%;object-fit:cover}
 .editorial .text{
 width:50%;
@@ -90,11 +52,11 @@ grid-template-columns:repeat(3,1fr);
 .lookbook div{
 height:300px;
 background-size:cover;
-transition:.6s;
+transition:.5s;
 }
 .lookbook div:hover{
-transform:scale(1.2) rotate(2deg);
-filter:brightness(1.4);
+transform:scale(1.15) rotate(1deg);
+filter:brightness(1.3);
 }
 
 /* PRODUCTS */
@@ -107,10 +69,7 @@ border-radius:20px;
 padding:10px;
 transition:.4s;
 }
-.card:hover{
-transform:translateY(-15px) scale(1.1);
-box-shadow:0 0 40px rgba(255,255,255,.2)
-}
+.card:hover{transform:translateY(-12px) scale(1.08)}
 .card img{width:100%;border-radius:15px}
 .btn{
 background:white;color:black;
@@ -121,43 +80,9 @@ margin-top:5px;
 cursor:pointer;
 }
 
-/* TESTIMONIAL */
-.testimonials{
-padding:60px;
-text-align:center;
-}
-.test{
-font-size:22px;
-opacity:0;
-animation:testSlide 6s infinite;
-}
-@keyframes testSlide{
-0%{opacity:0}
-20%{opacity:1}
-80%{opacity:1}
-100%{opacity:0}
-}
-
-/* VIDEO */
-.video{
-height:70vh;
-display:flex;
-align-items:center;
-justify-content:center;
-}
-.video video{
-width:80%;
-border-radius:20px;
-}
-
 /* CART */
 .cart-btn{position:fixed;top:20px;right:20px;font-size:25px;cursor:pointer}
-.badge{
-background:red;color:white;
-padding:4px 7px;
-border-radius:50%;
-font-size:12px;
-}
+.badge{background:red;color:white;padding:4px 7px;border-radius:50%;font-size:12px}
 .cart{
 position:fixed;
 right:-100%;
@@ -172,30 +97,20 @@ transition:.5s;
 .cart-item{display:flex;justify-content:space-between;margin:10px 0}
 
 /* FOOTER */
-footer{
-padding:40px;
-background:black;
-text-align:center;
-font-size:14px;
-}
+footer{padding:40px;background:black;text-align:center;font-size:14px}
 
-/* SCROLL ANIM */
+/* SCROLL REVEAL */
 .reveal{opacity:0;transform:translateY(80px);transition:1s}
 .reveal.active{opacity:1;transform:translateY(0)}
 </style>
 </head>
+
 <body>
 
 <div id="loader">ZYRA</div>
 
 <div class="hero reveal">
 <h1>ZYRA COLLECTIVE</h1>
-</div>
-
-<div class="parallax reveal">BUILT DIFFERENT</div>
-
-<div class="marquee">
-<span>LIMITED DROP • STREET LUXURY • ZYRA COLLECTIVE • </span>
 </div>
 
 <div class="editorial reveal">
@@ -222,21 +137,35 @@ font-size:14px;
 <div style="background-image:url(images/look6.jpg)"></div>
 </div>
 
-<!-- PRODUCTS SAME AS BEFORE -->
-<!-- (T-Shirts, Shirts, Pants sections same rehne do) -->
-
-<div class="testimonials">
-<div class="test">"Best streetwear in India"</div>
+<!-- PRODUCTS -->
+<div class="section reveal">
+<h2>T-Shirts</h2>
+<div class="row">
+<div class="card"><img src="images/t1.jpg"><h3>Oversized Black Tee</h3><p>₹999</p><button class="btn" onclick="add('Oversized Black Tee',999)">Add</button></div>
+<div class="card"><img src="images/t2.jpg"><h3>Graphic White Tee</h3><p>₹1099</p><button class="btn" onclick="add('Graphic White Tee',1099)">Add</button></div>
+<div class="card"><img src="images/t3.jpg"><h3>Street Grey Tee</h3><p>₹899</p><button class="btn" onclick="add('Street Grey Tee',899)">Add</button></div>
+</div>
 </div>
 
-<div class="video reveal">
-<video autoplay muted loop>
-<source src="images/brand.mp4" type="video/mp4">
-</video>
+<div class="section reveal">
+<h2>Shirts</h2>
+<div class="row">
+<div class="card"><img src="images/s1.jpg"><h3>Denim Shirt</h3><p>₹1499</p><button class="btn" onclick="add('Denim Shirt',1499)">Add</button></div>
+<div class="card"><img src="images/s2.jpg"><h3>Printed Shirt</h3><p>₹1399</p><button class="btn" onclick="add('Printed Shirt',1399)">Add</button></div>
+<div class="card"><img src="images/s3.jpg"><h3>Black Shirt</h3><p>₹1299</p><button class="btn" onclick="add('Black Shirt',1299)">Add</button></div>
+</div>
+</div>
+
+<div class="section reveal">
+<h2>Pants</h2>
+<div class="row">
+<div class="card"><img src="images/p1.jpg"><h3>Cargo Pants</h3><p>₹1799</p><button class="btn" onclick="add('Cargo Pants',1799)">Add</button></div>
+<div class="card"><img src="images/p2.jpg"><h3>Baggy Jeans</h3><p>₹1899</p><button class="btn" onclick="add('Baggy Jeans',1899)">Add</button></div>
+<div class="card"><img src="images/p3.jpg"><h3>Track Pants</h3><p>₹1599</p><button class="btn" onclick="add('Track Pants',1599)">Add</button></div>
+</div>
 </div>
 
 <div class="cart-btn" onclick="toggleCart()">🛒 <span id="badge" class="badge">0</span></div>
-
 <div class="cart" id="cart">
 <h3>Your Cart</h3>
 <div id="items"></div>
@@ -246,7 +175,6 @@ font-size:14px;
 
 <footer>
 <p>Zyra Collective © 2026</p>
-<p>Instagram | WhatsApp | Support</p>
 </footer>
 
 <script>
@@ -282,21 +210,14 @@ document.getElementById("badge").innerText=cart.length
 }
 update()
 
-// SCROLL REVEAL
 window.addEventListener("scroll",()=>{
 document.querySelectorAll(".reveal").forEach(el=>{
 let top=el.getBoundingClientRect().top
-if(top<window.innerHeight-100){
+if(top < window.innerHeight-100){
 el.classList.add("active")
 }
 })
 })
-
-// EMAILJS
-// service_id = "service_8ci83me"
-// template_id = "template_ydku54e"
-// public_key = "96hYsFzZry67bUX6V"
 </script>
-
 </body>
 </html>
