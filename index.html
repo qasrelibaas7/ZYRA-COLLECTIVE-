@@ -5,32 +5,58 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Zyra Collective</title>
 
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
+
 <style>
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial;background:#f2f2f2}
-header{display:flex;justify-content:space-between;align-items:center;padding:10px 15px;background:#111;color:white;position:sticky;top:0;z-index:10}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,Arial}
+body{background:#0f0f0f;color:white}
+
+header{
+position:fixed;
+top:0;width:100%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 40px;
+backdrop-filter:blur(10px);
+background:rgba(0,0,0,0.5);
+z-index:100;
+}
 header img{height:40px}
-.cart-btn{cursor:pointer;position:relative;font-size:22px}
+.cart-btn{cursor:pointer;font-size:22px;position:relative}
 .badge{position:absolute;top:-5px;right:-10px;background:red;color:white;font-size:12px;padding:2px 6px;border-radius:50%}
 
-.section{padding:15px}
-h2{margin:10px 0}
-.slider{display:flex;gap:12px;overflow-x:auto;padding-bottom:10px}
-.card{min-width:180px;background:white;border-radius:12px;padding:10px;box-shadow:0 3px 8px rgba(0,0,0,.15);transition:.3s}
-.card:hover{transform:scale(1.05)}
-.card img{width:100%;border-radius:8px}
-.card button{width:100%;margin-top:5px;padding:8px;background:#111;color:white;border:none;border-radius:6px}
+.hero{
+height:100vh;
+background:linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.7)),url("images/tshirt1.jpg") center/cover;
+display:flex;align-items:center;padding:40px;
+}
 
-#cart{position:fixed;top:0;right:-100%;width:100%;max-width:350px;height:100%;background:white;box-shadow:-4px 0 10px rgba(0,0,0,.3);transition:.4s;padding:15px;overflow:auto}
+.section{padding:80px 40px}
+h2{margin-bottom:20px}
+
+.swiper-slide{
+background:#111;border-radius:20px;overflow:hidden
+}
+.swiper-slide img{width:100%;height:250px;object-fit:cover}
+.card-info{padding:15px}
+.card-info button{
+margin-top:10px;width:100%;padding:10px;
+border:none;border-radius:20px;
+background:white;color:black;font-weight:bold;
+cursor:pointer;
+}
+
+#cart{
+position:fixed;top:0;right:-100%;
+width:100%;max-width:350px;height:100%;
+background:#111;padding:20px;
+transition:.4s;z-index:200;
+}
 #cart.active{right:0}
-
-.cart-item{display:flex;justify-content:space-between;margin-bottom:5px}
+.cart-item{display:flex;justify-content:space-between;margin-bottom:8px}
 .cart-item button{background:red;color:white;border:none;padding:2px 6px}
-
-.checkout select, .checkout button{width:100%;margin-top:10px;padding:8px}
-
-.whatsapp{position:fixed;right:15px;bottom:15px;width:55px}
-.whatsapp img{width:100%}
 </style>
 </head>
 
@@ -41,65 +67,85 @@ h2{margin:10px 0}
 <div class="cart-btn" onclick="toggleCart()">🛒 <span class="badge" id="count">0</span></div>
 </header>
 
+<section class="hero">
+<div data-aos="fade-up">
+<h1>Streetwear Redefined</h1>
+<p>Zyra Collective – Gen Z Fashion Brand</p>
+</div>
+</section>
+
 <!-- TSHIRTS -->
-<div class="section">
-<h2>T-Shirts</h2>
-<div class="slider">
-<div class="card"><img src="images/tshirt1.jpg"><p>GenZ Tee</p><p>₹599</p><button onclick="add('GenZ Tee',599)">Add</button></div>
-<div class="card"><img src="images/tshirt2.jpg"><p>Oversize Tee</p><p>₹699</p><button onclick="add('Oversize Tee',699)">Add</button></div>
-<div class="card"><img src="images/tshirt3.jpg"><p>Street Tee</p><p>₹649</p><button onclick="add('Street Tee',649)">Add</button></div>
-<div class="card"><img src="images/tshirt4.jpg"><p>Graphic Tee</p><p>₹749</p><button onclick="add('Graphic Tee',749)">Add</button></div>
-<div class="card"><img src="images/tshirt5.jpg"><p>Minimal Tee</p><p>₹549</p><button onclick="add('Minimal Tee',549)">Add</button></div>
+<section class="section">
+<h2 data-aos="fade-right">T-Shirts</h2>
+<div class="swiper tshirts">
+<div class="swiper-wrapper">
+<div class="swiper-slide">
+<img src="images/tshirt1.jpg">
+<div class="card-info">
+<h3>GenZ Tee</h3><p>₹599</p>
+<button onclick="add('GenZ Tee',599)">Add to Cart</button>
 </div>
 </div>
+
+<div class="swiper-slide">
+<img src="images/tshirt2.jpg">
+<div class="card-info">
+<h3>Oversize Tee</h3><p>₹699</p>
+<button onclick="add('Oversize Tee',699)">Add to Cart</button>
+</div>
+</div>
+
+<div class="swiper-slide">
+<img src="images/tshirt3.jpg">
+<div class="card-info">
+<h3>Street Tee</h3><p>₹649</p>
+<button onclick="add('Street Tee',649)">Add to Cart</button>
+</div>
+</div>
+</div>
+</div>
+</section>
 
 <!-- SHIRTS -->
-<div class="section">
-<h2>Shirts</h2>
-<div class="slider">
-<div class="card"><img src="images/shirt1.jpg"><p>Street Shirt</p><p>₹999</p><button onclick="add('Street Shirt',999)">Add</button></div>
-<div class="card"><img src="images/shirt2.jpg"><p>Casual Shirt</p><p>₹899</p><button onclick="add('Casual Shirt',899)">Add</button></div>
-<div class="card"><img src="images/shirt3.jpg"><p>Denim Shirt</p><p>₹1099</p><button onclick="add('Denim Shirt',1099)">Add</button></div>
-<div class="card"><img src="images/shirt4.jpg"><p>Checked Shirt</p><p>₹949</p><button onclick="add('Checked Shirt',949)">Add</button></div>
-<div class="card"><img src="images/shirt5.jpg"><p>Formal Shirt</p><p>₹1199</p><button onclick="add('Formal Shirt',1199)">Add</button></div>
+<section class="section">
+<h2 data-aos="fade-right">Shirts</h2>
+<div class="swiper shirts">
+<div class="swiper-wrapper">
+<div class="swiper-slide">
+<img src="images/shirt1.jpg">
+<div class="card-info">
+<h3>Street Shirt</h3><p>₹999</p>
+<button onclick="add('Street Shirt',999)">Add to Cart</button>
 </div>
 </div>
 
-<!-- PANTS -->
-<div class="section">
-<h2>Pants</h2>
-<div class="slider">
-<div class="card"><img src="images/pants1.jpg"><p>Cargo Pants</p><p>₹1299</p><button onclick="add('Cargo Pants',1299)">Add</button></div>
-<div class="card"><img src="images/pants2.jpg"><p>Joggers</p><p>₹999</p><button onclick="add('Joggers',999)">Add</button></div>
-<div class="card"><img src="images/pants3.jpg"><p>Denim</p><p>₹1399</p><button onclick="add('Denim',1399)">Add</button></div>
-<div class="card"><img src="images/pants4.jpg"><p>Track Pants</p><p>₹899</p><button onclick="add('Track Pants',899)">Add</button></div>
-<div class="card"><img src="images/pants5.jpg"><p>Chinos</p><p>₹1199</p><button onclick="add('Chinos',1199)">Add</button></div>
+<div class="swiper-slide">
+<img src="images/shirt2.jpg">
+<div class="card-info">
+<h3>Casual Shirt</h3><p>₹899</p>
+<button onclick="add('Casual Shirt',899)">Add to Cart</button>
 </div>
 </div>
+</div>
+</div>
+</section>
 
 <!-- CART -->
 <div id="cart">
 <h2>Your Cart</h2>
 <div id="items"></div>
 <p>Total: ₹<span id="total">0</span></p>
-
-<div class="checkout">
-<select id="pay">
-<option>Cash on Delivery</option>
-<option>UPI</option>
-</select>
-
-<p id="upi" style="display:none">Pay to: <b>7385009275@fam</b></p>
-
-<button onclick="order()">Place Order</button>
-</div>
 </div>
 
-<a class="whatsapp" href="https://wa.me/917385009275" target="_blank">
-<img src="images/whatsapp-icon.png">
-</a>
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
 <script>
+AOS.init();
+
+new Swiper('.tshirts',{slidesPerView:1.3,spaceBetween:20,loop:true});
+new Swiper('.shirts',{slidesPerView:1.3,spaceBetween:20,loop:true});
+
 let cart=[],total=0;
 
 function toggleCart(){
@@ -111,31 +157,21 @@ cart.push({name,price})
 update()
 }
 
-function remove(i){
-total-=cart[i].price
-cart.splice(i,1)
-update()
-}
-
 function update(){
 let html=''
 total=0
-cart.forEach((item,i)=>{
-total+=item.price
-html+=`<div class="cart-item">${item.name} ₹${item.price} <button onclick="remove(${i})">X</button></div>`
+cart.forEach((i,index)=>{
+total+=i.price
+html+=`<div class="cart-item">${i.name} ₹${i.price} <button onclick="remove(${index})">X</button></div>`
 })
 items.innerHTML=html
 count.innerText=cart.length
 document.getElementById('total').innerText=total
 }
 
-pay.onchange=()=>upi.style.display=pay.value=='UPI'?'block':'none'
-
-function order(){
-let msg="Zyra Order:\n"
-cart.forEach(i=>msg+=`${i.name} ₹${i.price}\n`)
-msg+=`Total ₹${total}\nPayment: ${pay.value}`
-window.open(`https://wa.me/917385009275?text=${encodeURIComponent(msg)}`)
+function remove(i){
+cart.splice(i,1)
+update()
 }
 </script>
 
